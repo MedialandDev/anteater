@@ -1,4 +1,7 @@
-const data = [
+﻿// @flow
+import { type CountyData, DistrictData } from './types';
+
+const data: Array<CountyData> = [
   {
     name: '基隆市',
     districts: [
@@ -463,7 +466,8 @@ const data = [
     ],
   }];
 
-export const getCounties = () => data.map(o => o.name);
-export const getDistricts = countyName => data[countyName];
+export const getCounties = (): Array<string> => data.map(o => o.name);
+export const getDistricts = (countyName:string): Array<DistrictData> => data[countyName];
+
 
 export default data;

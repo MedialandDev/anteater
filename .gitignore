@@ -1,1 +1,6 @@
 node_modules/
+thumbs.db
+.DS_Store
+npm-debug.log
+npm-debug.log.*
+!.gitkeep

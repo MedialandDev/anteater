@@ -4,33 +4,54 @@
   "description": "Medialand Interactive libs",
   "main": "dist/index.js",
   "scripts": {
-    "start": "npm run build -- --watch --ignore **/__tests__/",
-    "build": "babel --out-dir dist src",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --hot --config ./internals/webpack/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./internals/webpack/webpack.prod.js",
+    "build-dev": "cross-env NODE_ENV=development webpack --config ./internals/webpack/webpack.prod.js",
+    "flow": "flow",
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/milkmidi/milkmidi-util.git"
+    "url": "git+https://github.com/MedialandDev/anteater.git"
   },
-  "author": "milkmidi",
-  "license": "ISC",
+  "author": "Medialand",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/milkmidi/milkmidi-util/issues"
+    "url": "https://github.com/MedialandDev/anteater/issues"
   },
-  "homepage": "https://github.com/milkmidi/milkmidi-util#readme",
+  "homepage": "https://github.com/MedialandDev/anteater#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.0",
-    "eslint": "^4.4.1",
-    "eslint-config-airbnb-base": "^11.3.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.28.9",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-flowtype": "^2.41.0",
+    "eslint-plugin-html": "^4.0.1",
     "eslint-plugin-import": "^2.7.0",
-    "jest": "^20.0.4",
-    "lodash": "^4.17.4",
-    "uglifyjs-webpack-plugin": "^1.0.1",
-    "webpack": "^3.8.1"
+    "eslint-plugin-vue-libs": "^2.1.0",
+    "flow-bin": "^0.63.1",
+    "jest": "^22.1.2",
+    "pug": "^2.0.0-rc.4",
+    "pug-loader": "^2.3.0",
+    "vue": "^2.5.13",
+    "vue-loader": "^13.7.0",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.13",
+    "vuex": "^3.0.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.0",
+    "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "rxjs": "^5.5.6"
   }
 }

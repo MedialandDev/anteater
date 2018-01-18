@@ -1,0 +1,29 @@
+// @flow
+let fbWebView = false;
+let lineWebView = false;
+let uiwebview = false;
+
+if (typeof window !== 'undefined' && typeof documnet !== 'undefined') {
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  const { standalone } = window.navigator;
+  const safari = /safari/.test(userAgent);
+  const ios = /iphone|ipod|ipad/.test(userAgent);
+  fbWebView = /fbid|fbios|fblc|fb_iab|fb4a|fbav/.test(userAgent);
+  lineWebView = /line/i.test(userAgent);
+  uiwebview = false;
+  if (ios) {
+    if (!standalone && safari) {
+      // iosType = 'ios browser';
+    } else if (standalone && !safari) {
+      // iosType = 'ios standalone';
+    } else if (!standalone && !safari) {
+      // iosType = 'ios uiwebview';
+      uiwebview = true;
+    }
+  }
+}
+
+
+export const isWebView = ():boolean => uiwebview || fbWebView || lineWebView;
+export const isFBWebView = ():boolean => fbWebView;
+export const isLineWebView = ():boolean => lineWebView;

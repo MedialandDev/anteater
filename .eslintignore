@@ -1,3 +1,9 @@
-node_modules/
-dist/
-lib/
+!.eslintrc.js
+!/internals/webpack/*.js
+
+node_modules/*
+dist/*
+lib/*
+flow-typed/*
+/YoutubePlayer/*
+/utils/*
