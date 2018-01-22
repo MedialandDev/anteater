@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import App from '@/containers/App';
+import App from '@/container/App';
 import router from './router';
 // eslint-disable-next-line
 new Vue({

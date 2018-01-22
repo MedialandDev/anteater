@@ -8,6 +8,7 @@ const entryArr = [
   'YoutubePlayer',
   'YoutubePlayer/component',
   'util/countyDistrictData',
+  'FB',
 ];
 
 const entry = entryArr.reduce((obj, moduleName) => {

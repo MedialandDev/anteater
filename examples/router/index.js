@@ -1,8 +1,8 @@
 import VueRouter from 'vue-router';
 import Vue from 'vue';
 
-import Main from '@/components/Main';
-import YoutubePlayer from '@/components/YoutubePlayer';
+import Main from '@/component/Main';
+import YoutubePlayer from '@/component/YoutubePlayer';
 
 
 Vue.use(VueRouter);
