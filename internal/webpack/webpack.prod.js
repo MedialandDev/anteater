@@ -7,7 +7,7 @@ const base = require('./webpack.base');
 const entryArr = [
   'YoutubePlayer',
   'YoutubePlayer/component',
-  'utils/countyDistrictData',
+  'util/countyDistrictData',
 ];
 
 const entry = entryArr.reduce((obj, moduleName) => {

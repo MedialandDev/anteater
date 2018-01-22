@@ -1,9 +1,9 @@
 !.eslintrc.js
-!/internals/webpack/*.js
+!/internal/webpack/*.js
 
 node_modules/*
 dist/*
 lib/*
 flow-typed/*
 /YoutubePlayer/*
-/utils/*
+/util/*

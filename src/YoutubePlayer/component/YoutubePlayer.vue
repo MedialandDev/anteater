@@ -1,5 +1,6 @@
 <script>
 // @flow
+// eslint-disable-next-line
 import YoutubePlayer, { fetchScript } from 'anteater/YoutubePlayer';
 
 export default {
