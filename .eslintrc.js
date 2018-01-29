@@ -8,6 +8,7 @@ module.exports = {
   },
   globals: {
     YT: false,
+    pug: false,
   },
   settings: {
     'import/resolver': {

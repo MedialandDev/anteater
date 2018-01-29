@@ -7,6 +7,17 @@ const DEV_MODE = process.env.NODE_ENV === 'development';
 
 module.exports = {
   devtool: DEV_MODE ? 'inline-source-map' : false,
+  resolve: {
+    modules: [
+      path.resolve('src'),
+      path.resolve('node_modules'),
+    ],
+    alias: {
+      '@': path.resolve('examples'),
+      anteater: path.resolve('src'),
+    },
+    extensions: ['.js', '.vue'],
+  },
 
   module: {
     loaders: [

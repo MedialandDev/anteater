@@ -11,13 +11,6 @@ module.exports = merge(base, {
     path: path.resolve('./dist'),
     filename: 'examples.bundle.js',
   },
-  resolve: {
-    alias: {
-      '@': path.resolve('examples'),
-      anteater: path.resolve('src'),
-    },
-    extensions: ['.js', '.vue'],
-  },
   plugins: [
   ],
   devServer: {
