@@ -83,7 +83,7 @@ class YoutubePlayer {
 
     this.intervalId = setInterval(() => {
       this.onVideoProgress.next(this.getVideoLoadedFraction());
-    }, 350);
+    }, 333);
   }
   /**
    * @param {string} event

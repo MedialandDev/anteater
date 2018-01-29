@@ -1,11 +1,11 @@
 
-import CityAreaData, { getCities, getAreas } from '../';
+import CityAreaData, { getCities, getAreas } from './';
 
 describe('CityArea', () => {
   test('CityAreaData', () => {
     expect(Object.keys(CityAreaData).length).toBe(22);
   });
-  test('CityAreaData', () => {
+  test('共22個縣市', () => {
     expect(getCities().length).toBe(22);
   });
   test('getAreas', () => {

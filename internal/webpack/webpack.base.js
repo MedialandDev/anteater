@@ -13,14 +13,22 @@ module.exports = {
       path.resolve('node_modules'),
     ],
     alias: {
-      '@': path.resolve('examples'),
+      '@': path.resolve('src'),
       anteater: path.resolve('src'),
+      internal: path.resolve('internal'),
     },
     extensions: ['.js', '.vue'],
   },
 
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.md$/,
+        use: [
+          { loader: 'html-loader' },
+          { loader: 'markdown-loader' },
+        ],
+      },
       {
         test: /\.js$/,
         loader: 'babel-loader',

@@ -4,3 +4,4 @@ thumbs.db
 npm-debug.log
 npm-debug.log.*
 !.gitkeep
+.jest-test-results.json
