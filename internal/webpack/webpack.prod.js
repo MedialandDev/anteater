@@ -7,7 +7,7 @@ const base = require('./webpack.base');
 const entryArr = [
   'YoutubePlayer',
   'YoutubePlayer/component',
-  'util/countyDistrictData',
+  'CityArea',
   'FB',
 ];
 
