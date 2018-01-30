@@ -1,4 +1,3 @@
-
 import CityAreaData, { getCities, getAreas } from './';
 
 describe('CityArea', () => {

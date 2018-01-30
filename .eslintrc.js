@@ -23,6 +23,7 @@ module.exports = {
     'flowtype',
   ],
   rules: {
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-param-reassign': ['error', { props: false }],
     'import/extensions': ['error', 'always', {
       js: 'never',
