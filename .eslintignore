@@ -1,0 +1,11 @@
+!.eslintrc.js
+!/internal/webpack/*.js
+
+node_modules/*
+dist/*
+lib/*
+flow-typed/*
+/YoutubePlayer/*
+/util/*
+/CityArea/*
+/FB
