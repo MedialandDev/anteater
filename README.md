@@ -1,6 +1,6 @@
-# anteater_lib
+# ml.anteater
 
 ## Installation
 ```
-npm i -D anteater_lib
+npm i -D ml.anteater
 ```
