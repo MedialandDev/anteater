@@ -1,18 +1,11 @@
 <script>
-import Vuex from 'vuex';
-
 export default {
-  $name: '{{ name }}.vue',
   props: {},
   data: () => ({
   }),
   computed: {
-    ...Vuex.mapState([]),
-    ...Vuex.mapGetters([]),
   },
   methods: {
-    ...Vuex.mapMutations([]),
-    ...Vuex.mapActions([]),
   },
   mounted() {
   },
@@ -29,7 +22,6 @@ export default {
 </template>
 
 <style lang="stylus">
-  @require '~css/index'
   .{{ dashCase name }}
     // display: none
 </style>

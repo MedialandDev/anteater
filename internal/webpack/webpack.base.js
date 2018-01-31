@@ -65,7 +65,6 @@ module.exports = {
   externals: [
     'Vue',
     'Vuex',
-    'VueRouter',
   ],
 };
 

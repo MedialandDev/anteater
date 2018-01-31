@@ -1,6 +1,5 @@
 <script>
 export default {
-  $name: '{{ name }}.vue',
   props: {},
   data: () => ({
   }),
@@ -18,12 +17,11 @@ export default {
 </script>
 
 <template lang="pug">
-.{{ dashCase name }}
-  h1 {{ dashCase name }}
+.button
+  h1 button
 </template>
 
 <style lang="stylus">
-  @require '~css/index'
-  .{{ dashCase name }}
+  .button
     // display: none
 </style>
