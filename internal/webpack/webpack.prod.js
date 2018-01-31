@@ -35,10 +35,10 @@ module.exports = merge(base, {
     }),
   ],
   externals: [
+    ...base.externals,
     'rxjs/Rx',
     'rxjs/Subject',
     'rxjs',
-    'Vue',
     ...entryArr.map(moduleName => `anteater/${moduleName}`),
   ],
 });

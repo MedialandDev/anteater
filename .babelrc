@@ -13,6 +13,9 @@
   ],
   "plugins": [
     "transform-pug-html",
+    "jsx-v-model",
+    "jsx-vue-functional",
+    "transform-vue-jsx",
     "add-module-exports"
   ]
 }

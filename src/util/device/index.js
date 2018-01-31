@@ -24,6 +24,6 @@ if (typeof window !== 'undefined' && typeof documnet !== 'undefined') {
 }
 
 
-export const isWebView = ():boolean => uiwebview || fbWebView || lineWebView;
-export const isFBWebView = ():boolean => fbWebView;
-export const isLineWebView = ():boolean => lineWebView;
+export const isWebView = uiwebview || fbWebView || lineWebView;
+export const isFBWebView = fbWebView;
+export const isLineWebView = lineWebView;

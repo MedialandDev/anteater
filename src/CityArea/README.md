@@ -1,4 +1,5 @@
 ## CityArea
+[Source](https://github.com/MedialandDev/anteater/blob/master/src/CityArea/index.js) 
 ```js
 import CityAreaData, { getCities, getAreas } from 'anteater/CityArea';
 
@@ -13,4 +14,36 @@ const areas:Area[] = getAreas('新北市');
     ...
   ]
 */
+```
+
+## vue
+```html
+<script>
+import { getCities, getAreas } from 'anteater/CityArea';
+export default = {
+  data() {
+    return {
+      city: '',
+      area: '',
+      cities: getCities(),
+      areas: [],
+    };
+  },
+  watch: {
+    city(val) {
+      this.area = '';
+      this.areas = getAreas(val);
+    },
+  },
+}
+</script>
+<template lang="pug">
+section
+  select(v-model="city")
+    option(v-for="name in cities") {{name}}
+  select(v-model="area")
+    option(v-for="o in areas" :value="o") {{o.name}}
+  p {{city}}
+  p {{JSON.stringify(area)}}
+</template>
 ```

@@ -12,3 +12,7 @@ export type YoutubePlayerVars = {
   showinfo:number,
   rel:number,
 }
+
+export type YoutubePlayer = {
+  cueVideoById(videoId:string, startSeconds:number, suggestedQuality:number):void
+}
