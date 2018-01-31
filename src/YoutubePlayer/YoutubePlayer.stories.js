@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import Centered from '@storybook/addon-centered';
-import { withReadme, withDocs } from 'storybook-readme';
+import { withReadme } from 'storybook-readme';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import YoutubePlayer, { fetchScript } from './';
 import YoutubePlayerComponent from './component';
@@ -19,11 +19,16 @@ const log = (val) => {
 
 storiesOf('YoutubePlayer', module)
   .addDecorator(Centered)
-  .add('Basic', withDocs(README, () => ({
+  .add('Basic', withReadme(README, () => ({
     data() {
       return {
         state: '',
       };
+    },
+    methods: {
+      nextVideoHandler() {
+        this.player.cueVideoById('9tFTZhDqqj8');
+      },
     },
     mounted() {
       fetchScript().subscribe(() => {
@@ -41,13 +46,15 @@ storiesOf('YoutubePlayer', module)
 div
   #player
   p state:{{state}}
+  button(@click="nextVideoHandler") next video
     `,
   })))
-  .add('Component', withDocs(ComponentREADME, () => ({
+  .add('Component', withReadme(ComponentREADME, () => ({
     data() {
       return {
         state: '',
         progress: 0,
+        videoId: '9tFTZhDqqj8',
       };
     },
     methods: {
@@ -58,18 +65,16 @@ div
         this.progress = p;
       },
     },
-    mounted() {
-
-    },
-
     template: pug`
 div
   YoutubePlayerComponent(
-    id="9tFTZhDqqj8" 
+    :id="videoId" 
     @stateChange="stateChange"
     @videoProgress="onVideoProgress"
     )
   p state:{{state}}
   p progress:{{progress}}
+  button(@click="videoId='9tFTZhDqqj8'") Video1
+  button(@click="videoId='lG0Ys-2d4MA'") Video2
     `,
   })));

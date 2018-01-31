@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import Centered from '@storybook/addon-centered';
-import { withDocs } from 'storybook-readme';
+import { withReadme } from 'storybook-readme/';
 import withTests from 'internal/storybook/withTests'; // eslint-disable-line
 
 import { getCities, getAreas } from './index';
@@ -11,7 +11,7 @@ import README from './README.md';
 storiesOf('CityArea', module)
   .addDecorator(Centered)
   .addDecorator(withTests('CityArea'))
-  .add('Basic', withDocs(README, () => ({
+  .add('Basic', withReadme(README, () => ({
     data() {
       return {
         city: '',
@@ -25,6 +25,9 @@ storiesOf('CityArea', module)
         this.area = '';
         this.areas = getAreas(val);
         action('CityArea')(`City:${val}`);
+      },
+      area({ name, zip }) {
+        action('CityArea')(`Area:${name} zip:${zip}`);
       },
     },
     template: pug`
