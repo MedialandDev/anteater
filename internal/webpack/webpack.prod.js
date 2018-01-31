@@ -6,7 +6,7 @@ const base = require('./webpack.base');
 
 const entryArr = [
   'YoutubePlayer',
-  'YoutubePlayer/component',
+  'YoutubePlayer/vue',
   'CityArea',
   'FB',
   'util/device',

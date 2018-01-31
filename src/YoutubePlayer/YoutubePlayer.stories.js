@@ -5,7 +5,7 @@ import Centered from '@storybook/addon-centered';
 import { withReadme } from 'storybook-readme';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import YoutubePlayer, { fetchScript } from './';
-import YoutubePlayerComponent from './component';
+import YoutubePlayerComponent from './vue';
 
 import README from './README.md';
 import ComponentREADME from './component/README.md';
