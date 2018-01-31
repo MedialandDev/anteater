@@ -1,6 +1,6 @@
 ## YoutubePlayer
 ```js
-import YoutubePlayer, { fetchScript } from 'anteater/YoutubePlayer';
+import YoutubePlayer, { fetchScript } from 'ml.anteater/YoutubePlayer';
 
 // Create instance
 let player;

@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --config ./internal/webpack/webpack.prod.js",
     "build-dev": "cross-env NODE_ENV=development webpack --config ./internal/webpack/webpack.prod.js",
     "generator": "plop --plopfile ./internal/generator/index.js",
-    "storybook": "start-storybook -p 9001 -c ./internal/storybook",
+    "storybook": "npm run test && start-storybook -p 9001 -c ./internal/storybook",
     "storybook-build": "build-storybook -c ./internal/storybook -o dist/storybook",
     "flow": "flow",
     "test": "jest --json --outputFile=.jest-test-results.json"

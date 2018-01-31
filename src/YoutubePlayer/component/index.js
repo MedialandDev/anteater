@@ -1,1 +1,1 @@
-export default from './YoutubePlayer.vue';
+export { default } from './YoutubePlayer.vue';

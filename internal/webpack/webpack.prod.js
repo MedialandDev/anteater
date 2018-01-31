@@ -25,7 +25,7 @@ module.exports = merge(base, {
   output: {
     path: path.resolve('./'),
     filename: '[name].js',
-    library: 'anteater',
+    library: 'ml.anteater',
     libraryTarget: 'umd',
     sourcePrefix: '',
   },
@@ -39,7 +39,7 @@ module.exports = merge(base, {
     'rxjs/Rx',
     'rxjs/Subject',
     'rxjs',
-    ...entryArr.map(moduleName => `anteater/${moduleName}`),
+    ...entryArr.map(moduleName => `ml.anteater/${moduleName}`),
   ],
 });
 

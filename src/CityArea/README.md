@@ -1,7 +1,7 @@
 ## CityArea
 [Source](https://github.com/MedialandDev/anteater/blob/master/src/CityArea/index.js) 
 ```js
-import CityAreaData, { getCities, getAreas } from 'anteater/CityArea';
+import CityAreaData, { getCities, getAreas } from 'ml.anteater/CityArea';
 
 const cities: string[] = getCities();
 // output：['基隆市', '臺北市', ...]

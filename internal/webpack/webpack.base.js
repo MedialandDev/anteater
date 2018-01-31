@@ -14,7 +14,7 @@ module.exports = {
     ],
     alias: {
       '@': path.resolve('src'),
-      anteater: path.resolve('src'),
+      'ml.anteater': path.resolve('src'),
       internal: path.resolve('internal'),
     },
     extensions: ['.js', '.vue'],
