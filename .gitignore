@@ -1,8 +1,12 @@
+!.gitkeep
 node_modules/
 thumbs.db
 .DS_Store
 npm-debug.log
 npm-debug.log.*
 dist/*
-!.gitkeep
 .jest-test-results.json
+/YoutubePlayer
+/CityArea
+/FB
+/util
