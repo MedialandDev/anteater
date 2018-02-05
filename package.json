@@ -10,6 +10,9 @@
     "plop": "plop --plopfile ./internal/generator/index.js",
     "storybook": "npm run test && start-storybook -p 9001 -c ./internal/storybook",
     "storybook-build": "build-storybook -c ./internal/storybook -o dist/storybook",
+    "lint": "eslint src/**/*.{js,vue}",
+    "lint-staged": "lint-staged",
+    "precommit": "lint-staged",
     "flow": "flow",
     "test": "jest --json --outputFile=.jest-test-results.json"
   },
@@ -21,6 +24,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MedialandDev/anteater/issues"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": "lint"
   },
   "homepage": "https://github.com/MedialandDev/anteater#readme",
   "devDependencies": {
@@ -51,7 +57,9 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-vue-libs": "^2.1.0",
     "flow-bin": "^0.64.0",
+    "husky": "^0.14.3",
     "jest": "^22.1.2",
+    "lint-staged": "^6.1.0",
     "plop": "^1.9.1",
     "pug": "^2.0.0-rc.4",
     "pug-loader": "^2.3.0",

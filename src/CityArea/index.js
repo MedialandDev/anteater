@@ -1,4 +1,4 @@
-﻿// @flow
+// @flow
 import { type CityArea, Area } from './types';
 
 const data:CityArea = {

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import Centered from '@storybook/addon-centered';
 import { withReadme } from 'storybook-readme';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+// import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import YoutubePlayer, { fetchScript } from './';
 import YoutubePlayerComponent from './vue';
 
