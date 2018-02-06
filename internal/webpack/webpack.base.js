@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const { name, version } = require('../../package.json');
+const { name } = require('../../package.json');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const DEV_MODE = process.env.NODE_ENV === 'development';
@@ -14,7 +14,7 @@ module.exports = {
     ],
     alias: {
       '@': path.resolve('src'),
-      anteater: path.resolve('src'),
+      'ml.anteater': path.resolve('src'),
       internal: path.resolve('internal'),
     },
     extensions: ['.js', '.vue'],
@@ -48,7 +48,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.BannerPlugin(`${name} ${version} under MIT License copyright ${new Date().getFullYear()} Medialand`),
+    new webpack.BannerPlugin(`${name} under MIT License copyright ${new Date().getFullYear()} Medialand`),
     ...DEV_MODE
       ? [
         new webpack.NamedModulesPlugin(),
@@ -62,11 +62,9 @@ module.exports = {
         }),
       ],
   ],
-
   externals: [
     'Vue',
     'Vuex',
-    'VueRouter',
   ],
 };
 

@@ -1,7 +1,7 @@
-const componentGenerator = require('./component');
-const containerGenerator = require('./container');
+const jsGenerator = require('./js');
+const vueGenerator = require('./vue');
 
 module.exports = (plop) => {
-  plop.setGenerator('component', componentGenerator);
-  plop.setGenerator('container', containerGenerator);
+  plop.setGenerator('js', jsGenerator);
+  plop.setGenerator('vue component', vueGenerator);
 };

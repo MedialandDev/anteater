@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable max-len */
 import { Observable } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
 import { type YoutubePlayerVars } from './types';

@@ -3,12 +3,12 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import Centered from '@storybook/addon-centered';
 import { withReadme } from 'storybook-readme';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+// import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import withTests from 'internal/storybook/withTests'; // eslint-disable-line
 import YoutubePlayer, { fetchScript } from './';
-import YoutubePlayerComponent from './component';
-
+import YoutubePlayerComponent from './vue';
 import README from './README.md';
-import ComponentREADME from './component/README.md';
+import ComponentREADME from './vue/README.md';
 
 
 Vue.component('YoutubePlayerComponent', YoutubePlayerComponent);
@@ -19,6 +19,7 @@ const log = (val) => {
 
 storiesOf('YoutubePlayer', module)
   .addDecorator(Centered)
+  .addDecorator(withTests('YoutubePlayer'))
   .add('Basic', withReadme(README, () => ({
     data() {
       return {

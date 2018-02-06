@@ -1,6 +1,5 @@
 // @flow
 /* eslint no-param-reassign:off , forInStatement:off */
-
 let queryObject = null;
 /**
  * queryString
