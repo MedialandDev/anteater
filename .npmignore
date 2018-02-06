@@ -10,3 +10,4 @@ internal
 flow-typed
 .vscode
 .babelrc
+dist
