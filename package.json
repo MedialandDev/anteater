@@ -2,7 +2,7 @@
   "name": "ml.anteater",
   "version": "1.1.3",
   "description": "Medialand Interactive libs",
-  "main": "dist/index.js",
+  "main": "",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --hot --config ./internal/webpack/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config ./internal/webpack/webpack.prod.js",
@@ -16,6 +16,24 @@
     "flow": "flow",
     "test": "jest --json --outputFile=.jest-test-results.json"
   },
+  "lint-staged": {
+    "*.{js,jsx,vue}": "lint"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "ml.anteater/(.*)$": "<rootDir>/src/$1",
+      "^vue$": "vue/dist/vue.common.js"
+    },
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    "mapCoverage": true
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MedialandDev/anteater.git"
@@ -25,9 +43,6 @@
   "bugs": {
     "url": "https://github.com/MedialandDev/anteater/issues"
   },
-  "lint-staged": {
-    "*.{js,jsx,vue}": "lint"
-  },
   "homepage": "https://github.com/MedialandDev/anteater#readme",
   "devDependencies": {
     "@storybook/addon-centered": "^3.3.11",
@@ -35,6 +50,7 @@
     "@storybook/addon-options": "^3.3.11",
     "@storybook/addon-viewport": "^3.3.11",
     "@storybook/vue": "^3.3.11",
+    "avoriaz": "^6.3.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
@@ -66,6 +82,7 @@
     "storybook-addon-jest": "0.0.1",
     "storybook-readme": "^3.2.0",
     "vue": "^2.5.13",
+    "vue-jest": "^2.0.1",
     "vue-loader": "^14.0.2",
     "vue-template-compiler": "^2.5.13",
     "vuex": "^3.0.1",
