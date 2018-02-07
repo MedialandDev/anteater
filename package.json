@@ -4,9 +4,8 @@
   "description": "Medialand Interactive libs",
   "main": "",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --hot --config ./internal/webpack/webpack.dev.js",
+    "start": "npm run stroybook",
     "build": "cross-env NODE_ENV=production webpack --config ./internal/webpack/webpack.prod.js",
-    "build-dev": "cross-env NODE_ENV=development webpack --config ./internal/webpack/webpack.prod.js",
     "plop": "plop --plopfile ./internal/generator/index.js",
     "storybook": "npm run test && start-storybook -p 9001 -c ./internal/storybook",
     "storybook-build": "build-storybook -c ./internal/storybook -o dist/storybook",
