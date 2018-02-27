@@ -1,7 +1,7 @@
 ## YoutubePlayer/component
 ```html
 <script>
-import YoutubePlayer from 'anteater/YoutubePlayer/vue';
+import YoutubePlayer from 'ml.anteater/YoutubePlayer/vue';
 
 
 </script>
