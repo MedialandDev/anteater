@@ -45,6 +45,7 @@ class YoutubePlayer {
   onVideoProgress: Subject;
   player:any;
   intervalId:number;
+  destroyed:boolean = false;
   /**
    * @param {string} domID
    * @param {string} videoId
@@ -129,6 +130,9 @@ class YoutubePlayer {
     return this.player;
   }
   destroy() {
+    if (this.destroyed) {
+      return;
+    }
     this.onReady.unsubscribe();
     this.onReady = null;
     this.onStateChange.unsubscribe();
@@ -139,6 +143,7 @@ class YoutubePlayer {
     this.player = null;
     clearInterval(this.intervalId);
     this.intervalId = -1;
+    this.destroyed = true;
   }
 }
 
