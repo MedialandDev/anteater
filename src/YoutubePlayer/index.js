@@ -76,7 +76,7 @@ class YoutubePlayer {
         onReady: event => this.onReady.next(event),
         onStateChange: ({ data }) => {
           this.onStateChange.next(data);
-          if (data === YoutubePlayer.STATE_ENDED && this.loop === 1) {
+          if (data === YoutubePlayer.STATE_ENDED && this.loop) {
             this.playVideo();
           }
         },

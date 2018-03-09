@@ -6,7 +6,8 @@ import YoutubePlayer from 'ml.anteater/YoutubePlayer/vue';
 
 <template lang="pug">
 YoutubePlayer(id="lG0Ys-2d4MA"
-  :autoplay="true | false"
+  autoplay
+  loop
   @stateChange="stateChange"
   @videoProgress="onVideoProgress")
 </template>
@@ -16,4 +17,5 @@ YoutubePlayer(id="lG0Ys-2d4MA"
 |Name|Description|Type|Values|Default|
 |---|---|---|---|---|
 |id|Video id|string|--|--|
-|autoplay|autoplay|boolean|--|--|
+|autoplay|autoplay|boolean|--|false|
+|loop|loop|boolean|--|false|

@@ -47,8 +47,8 @@ export default {
       this.destroyPlayer();
       const opt = {
         ...this.options,
-        autoplay: this.autoplay,
-        loop: this.loop,
+        autoplay: this.autoplay ? 1 : 0,
+        loop: this.loop ? 1 : 0,
       };
       const player = new YoutubePlayer(this.domID, this.id, this.width, this.height, opt);
       player.onStateChange.subscribe(stateCode => this.$emit('stateChange', stateCode));

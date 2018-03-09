@@ -73,6 +73,7 @@ div
     @stateChange="stateChange"
     @videoProgress="onVideoProgress"
     autoplay
+    loop
     )
   p state:{{state}}
   p progress:{{progress}}
