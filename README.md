@@ -21,3 +21,10 @@ npm run build
 
 ## stoybook
 > https://medialanddev.github.io/anteater/storybook/
+
+## Changelog
+### [1.1.4]
+- YoutubePlayer autoplay
+
+### [1.1.0]
+- initinal project

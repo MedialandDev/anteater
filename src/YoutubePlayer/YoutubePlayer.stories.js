@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import Centered from '@storybook/addon-centered';
-import { withReadme } from 'storybook-readme';
+import { withDocs } from 'storybook-readme';
 // import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import withTests from 'internal/storybook/withTests'; // eslint-disable-line
 import YoutubePlayer, { fetchScript } from './';
@@ -20,7 +20,7 @@ const log = (val) => {
 storiesOf('YoutubePlayer', module)
   .addDecorator(Centered)
   .addDecorator(withTests('YoutubePlayer'))
-  .add('Basic', withReadme(README, () => ({
+  .add('Basic', withDocs(README, () => ({
     data() {
       return {
         state: '',
@@ -50,7 +50,7 @@ div
   button(@click="nextVideoHandler") next video
     `,
   })))
-  .add('Component', withReadme(ComponentREADME, () => ({
+  .add('Component', withDocs(ComponentREADME, () => ({
     data() {
       return {
         state: '',
@@ -72,6 +72,8 @@ div
     :id="videoId" 
     @stateChange="stateChange"
     @videoProgress="onVideoProgress"
+    autoplay
+    loop
     )
   p state:{{state}}
   p progress:{{progress}}

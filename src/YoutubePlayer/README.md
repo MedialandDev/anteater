@@ -17,6 +17,15 @@ player.destory();
 
 ## API
 ```js
+
+new YoutubePlayer(
+  domID:string, 
+  videoId:string, 
+  width:number = 640, 
+  height:number = 390, 
+  options:YoutubePlayerVars | null = {})
+
+
 // https://developers.google.com/youtube/player_parameters
 export type YoutubePlayerVars = {
   autoplay:number,

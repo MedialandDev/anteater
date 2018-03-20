@@ -7,9 +7,7 @@ export default {
   name: 'anteater-youtubeplayer',
   player: null,
   props: {
-    id: {
-      type: String,
-    },
+    id: String,
     width: {
       type: Number,
       default: 640,
@@ -20,6 +18,15 @@ export default {
     },
     options: {
       type: Object,
+      default: () => ({}),
+    },
+    autoplay: {
+      type: Boolean,
+      default: false,
+    },
+    loop: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -38,7 +45,12 @@ export default {
   methods: {
     createPlayer() {
       this.destroyPlayer();
-      const player = new YoutubePlayer(this.domID, this.id, this.width, this.height, this.options);
+      const opt = {
+        ...this.options,
+        autoplay: this.autoplay ? 1 : 0,
+        loop: this.loop ? 1 : 0,
+      };
+      const player = new YoutubePlayer(this.domID, this.id, this.width, this.height, opt);
       player.onStateChange.subscribe(stateCode => this.$emit('stateChange', stateCode));
       player.onVideoProgress.subscribe(progress => this.$emit('videoProgress', progress));
       return player;
