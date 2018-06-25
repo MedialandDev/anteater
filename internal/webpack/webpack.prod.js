@@ -9,10 +9,11 @@ const entryArr = [
   'YoutubePlayer/vue',
   'CityArea',
   'FB',
+  'util',
   'util/device',
   'util/line',
   'util/validate',
-  'util',
+  'util/inView',
 ];
 
 const entry = entryArr.reduce((obj, moduleName) => {

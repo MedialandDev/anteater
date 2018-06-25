@@ -23,6 +23,10 @@ npm run build
 > https://medialanddev.github.io/anteater/storybook/
 
 ## Changelog
+
+### [1.2.0]
+- inView
+
 ### [1.1.4]
 - YoutubePlayer autoplay
 
