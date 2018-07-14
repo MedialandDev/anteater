@@ -13,6 +13,7 @@
     "flow"
   ],
   "plugins": [
+    "transform-decorators-legacy",
     "transform-pug-html",
     "jsx-v-model",
     "jsx-vue-functional",
