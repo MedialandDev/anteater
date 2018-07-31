@@ -92,6 +92,11 @@ export const logout = (): Promise<any> => (
 
 export const getMe = ():Promise<FBMe> => new Promise(resolve => FB.api('/me', res => resolve(res)));
 
+
+export const sharer = (url:string) => {
+  window.open(`https://www.facebook.com/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+};
+
 /**
  * @param {string} href
  * @return {Promise}
