@@ -13,6 +13,7 @@ export const shareMobile = (url:string) => {
 /**
  * mobile only
  * 桌機會產生兩次網址和 meta
+ * line 修好了，所以可以用這個了
  */
 export const shareText = (text:string) => {
   window.open(`http://line.naver.jp/R/msg/text/?${encodeURIComponent(text)}`);
