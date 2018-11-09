@@ -8,7 +8,7 @@ Vue.use(Vuex);
 setOptions({
   name: 'anteater addon',
   url: 'https://github.com/MedialandDev/anteater/',
-  addonPanelInRight: true,
+  // addonPanelInRight: true,
 });
 
 

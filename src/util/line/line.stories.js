@@ -6,7 +6,7 @@ import { text, withKnobs } from '@storybook/addon-knobs';
 
 import README from './README.md';
 
-import { share } from './';
+import { share } from '.';
 
 storiesOf('util/line', module)
   .addDecorator(Centered)

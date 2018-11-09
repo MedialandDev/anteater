@@ -1,11 +1,8 @@
 // @flow
 /* eslint-disable max-len */
-import { Observable } from 'rxjs/Rx';
-import { Subject } from 'rxjs/Subject';
+import { EventEmitter } from 'events';
 import { type YoutubePlayerVars } from './types';
 
-
-let isAPIReady = false;
 // https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
 const DEFAULT_PLAYER_VARS:YoutubePlayerVars = {
   autoplay: 0,
@@ -30,22 +27,34 @@ onStateChange
 5 (video cued).
  */
 
-class YoutubePlayer {
+class YoutubePlayer extends EventEmitter {
   static ON_READY:string = 'onReady';
+
   static ON_STATE_CHANGE:string = 'onStateChange';
+
+  static ON_PROGRESS:string = 'onProgress';
+
   static STATE_UNSTARTED:number = -1;
+
   static STATE_ENDED:number = 0;
+
   static STATE_PLAYING:number = 1;
+
   static STATE_PAUSED:number = 2;
+
   static STATE_BUFFERING:number = 3;
+
   static STATE_CUED:number = 5;
+
   loop:boolean = false;
-  onReady: Subject;
-  onStateChange: Subject;
-  onVideoProgress: Subject;
+
+
   player:any;
+
   intervalId:number;
+
   destroyed:boolean = false;
+
   /**
    * @param {string} domID
    * @param {string} videoId
@@ -54,12 +63,10 @@ class YoutubePlayer {
    * @param {DEFAULT_PLAYER_VARS} options
    */
   constructor(domID:string, videoId:string, width:number = 640, height:number = 390, options:YoutubePlayerVars | null = {}) {
+    super();
     if (!videoId) {
       throw new Error('invalidate youtube id');
     }
-    this.onReady = new Subject();
-    this.onStateChange = new Subject();
-    this.onVideoProgress = new Subject();
 
     const playerVars = {
       ...DEFAULT_PLAYER_VARS,
@@ -73,72 +80,73 @@ class YoutubePlayer {
       videoId,
       playerVars,
       events: {
-        onReady: event => this.onReady.next(event),
+        onReady: event => this.emit(YoutubePlayer.ON_STATE_CHANGE.ON_READY, event),
         onStateChange: ({ data }) => {
-          this.onStateChange.next(data);
+          this.emit(YoutubePlayer.ON_STATE_CHANGE, data);
           if (data === YoutubePlayer.STATE_ENDED && this.loop) {
             this.playVideo();
           }
+          this.startEmitProgress(data === YoutubePlayer.STATE_PLAYING);
         },
       },
     });
+  }
 
+  startEmitProgress(isPlaying:boolean) {
+    if (!isPlaying) {
+      clearInterval(this.intervalId);
+      this.intervalId = -1;
+      return;
+    }
     this.intervalId = setInterval(() => {
-      this.onVideoProgress.next(this.getVideoLoadedFraction());
+      this.emit(YoutubePlayer.ON_PROGRESS, this.getVideoLoadedFraction());
     }, 333);
   }
-  /**
-   * @param {string} event
-   * @param {function} listener
-   * @return {Subscriber}
-   */
-  subscribe(event:string, listener:Function) {
-    const subject = this[`${event}Subject`];
-    if (subject) {
-      return subject.subscribe(listener);
-    }
-    return null;
-  }
+
   cueVideoById(videoId:string, startSeconds:number, suggestedQuality) {
     this.player.cueVideoById(videoId, startSeconds, suggestedQuality);
   }
+
   loadVideoById(videoId:string, startSeconds:number, suggestedQuality) {
     this.player.loadVideoById(videoId, startSeconds, suggestedQuality);
   }
+
   playVideo() {
     this.player.playVideo();
   }
+
   pauseVideo() {
     this.player.pauseVideo();
   }
+
   stopVideo() {
     this.player.stopVideo();
   }
+
   seekTo(seconds:number, allowSeekAhead:boolean) {
     this.player.seekTo(seconds, allowSeekAhead);
   }
+
   setSize(width:number, height:number) {
     this.player.setSize(width, height);
   }
+
   getVideoLoadedFraction() {
     if (this.player && this.player.getVideoLoadedFraction) {
       return this.player.getVideoLoadedFraction();
     }
     return 0;
   }
+
   getPlayer() {
     return this.player;
   }
+
   destroy() {
     if (this.destroyed) {
       return;
     }
-    this.onReady.unsubscribe();
-    this.onReady = null;
-    this.onStateChange.unsubscribe();
-    this.onStateChange = null;
-    this.onVideoProgress.unsubscribe();
-    this.onVideoProgress = null;
+    this.removeAllListeners();
     this.player.destroy();
     this.player = null;
     clearInterval(this.intervalId);
@@ -148,34 +156,31 @@ class YoutubePlayer {
 }
 
 
-let loadYoutubeScriptPromise = null;
-const loadYoutubeScript = () => {
-  if (isAPIReady) {
-    return Promise.resolve();
+let isAPIScriptAppend:boolean = false;
+export const fetchScript = () => {
+  if (window.YT && window.YT.Player && window.YT.Player instanceof Function) {
+    return Promise.resolve(window.YT);
   }
-  if (loadYoutubeScriptPromise) {
-    return loadYoutubeScriptPromise;
-  }
-  loadYoutubeScriptPromise = new Promise((resolve) => {
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  return new Promise((resolve) => {
+    if (!isAPIScriptAppend) {
+      isAPIScriptAppend = true;
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+    const previous = window.onYouTubeIframeAPIReady;
+
+    // The API will call this function when page has finished downloading
+    // the JavaScript for the player API.
     window.onYouTubeIframeAPIReady = () => {
-      isAPIReady = true;
-      loadYoutubeScriptPromise = null;
-      window.onYouTubeIframeAPIReady = null;
-      delete window.onYouTubeIframeAPIReady;
-      resolve();
+      if (previous) {
+        previous();
+      }
+      resolve(window.YT);
     };
   });
-  return loadYoutubeScriptPromise;
 };
 
-
-/**
- * @return {Promise}
- */
-export const fetchScript = () => Observable.fromPromise(loadYoutubeScript());
 
 export default YoutubePlayer;

@@ -3,7 +3,7 @@ import Centered from '@storybook/addon-centered';
 import { withReadme } from 'storybook-readme';
 
 import README from './README.md';
-import { isWebView, isFBWebView, isLineWebView } from './';
+import { isWebView, isFBWebView, isLineWebView } from '.';
 
 storiesOf('util/device', module)
   .addDecorator(Centered)

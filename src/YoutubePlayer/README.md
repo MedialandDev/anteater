@@ -4,10 +4,13 @@ import YoutubePlayer, { fetchScript } from 'ml.anteater/YoutubePlayer';
 
 // Create instance
 let player;
-fetchScript().subscribe(()=>{
+fetchScript().then(()=>{
   player = new YoutubePlayer('player', 'lG0Ys-2d4MA');
-  player.onStateChange.subscribe((d) => {
-    console.log(`stateChange:${d}`);
+  player.on(YoutubePlayer.ON_STATE_CHANGE, (state) => {
+    console.log(`stateChange:${state}`);
+  });
+  player.on(YoutubePlayer.ON_PROGRESS, (progress) => {
+    console.log(`progress:${progress}`);
   });
 });
 

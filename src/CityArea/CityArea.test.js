@@ -1,4 +1,4 @@
-import CityAreaData, { getCities, getAreas } from './';
+import CityAreaData, { getCities, getAreas } from '.';
 
 describe('CityArea', () => {
   test('CityAreaData', () => {
