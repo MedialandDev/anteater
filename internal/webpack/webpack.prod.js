@@ -16,6 +16,16 @@ const entryArr = [
   'util/inView',
 ];
 
+const getLibFolderNames = () => {
+  const s = new Set();
+  entryArr.forEach((libName) => {
+    const [n] = libName.split('/');
+    s.add(n);
+  });
+  return Array.from(s);
+};
+
+
 const entry = entryArr.reduce((obj, moduleName) => {
   obj[`./${moduleName}/index`] = `./src/${moduleName}/index.js`;
   return obj;
@@ -31,7 +41,7 @@ module.exports = merge(base, {
     sourcePrefix: '',
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], {
+    new CleanWebpackPlugin(getLibFolderNames(), {
       root: process.cwd(),
     }),
   ],
@@ -43,4 +53,3 @@ module.exports = merge(base, {
     ...entryArr.map(moduleName => `ml.anteater/${moduleName}`),
   ],
 });
-
