@@ -24,6 +24,9 @@ npm run build
 
 ## Changelog
 
+### [1.3.0]
+- remove Rxjs for YoutubePlayer 
+
 ### [1.2.0]
 - inView
 
