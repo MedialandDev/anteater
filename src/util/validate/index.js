@@ -20,8 +20,7 @@ export const isEmail = (email:string):boolean => (!email ? false : EMAIL_PATTERN
  * @param {string} mobileNumber
  * @return {boolean}
  */
-export const isMobileNumber = (mobileNumber:string):boolean =>
-  (!mobileNumber ? false : MOBILE_PATTERN.test(mobileNumber.toString()));
+export const isMobileNumber = (mobileNumber:string):boolean => (!mobileNumber ? false : MOBILE_PATTERN.test(mobileNumber.toString()));
 /**
  * 是否為有效的台灣身份字號
  * @param {string} id

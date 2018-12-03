@@ -51,8 +51,8 @@ export default {
         loop: this.loop ? 1 : 0,
       };
       const player = new YoutubePlayer(this.domID, this.id, this.width, this.height, opt);
-      player.onStateChange.subscribe(stateCode => this.$emit('stateChange', stateCode));
-      player.onVideoProgress.subscribe(progress => this.$emit('videoProgress', progress));
+      player.on(YoutubePlayer.ON_STATE_CHANGE, stateCode => this.$emit('stateChange', stateCode));
+      player.on(YoutubePlayer.ON_PROGRESS, progress => this.$emit('videoProgress', progress));
       return player;
     },
     destroyPlayer() {
@@ -70,7 +70,7 @@ export default {
     },
   },
   mounted() {
-    fetchScript().subscribe(() => {
+    fetchScript().then(() => {
       this.player = this.createPlayer();
     });
   },

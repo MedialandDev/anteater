@@ -6,7 +6,7 @@ import { text, withKnobs } from '@storybook/addon-knobs';
 import withTests from 'internal/storybook/withTests'; // eslint-disable-line
 import README from './README.md';
 
-import { isEmail, isTWIDCard } from './';
+import { isEmail, isTWIDCard } from '.';
 
 storiesOf('util/validate', module)
   .addDecorator(Centered)

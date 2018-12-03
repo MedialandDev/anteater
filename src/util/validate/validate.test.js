@@ -1,5 +1,5 @@
 
-import { isTWIDCard, isEmail, isMobileNumber } from './';
+import { isTWIDCard, isEmail, isMobileNumber } from '.';
 
 describe('validate', () => {
   test('isTWIDCard', () => {

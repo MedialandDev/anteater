@@ -1,4 +1,4 @@
-import { queryString } from './';
+import { queryString } from '.';
 
 describe('util index.js', () => {
   test('queryString', () => {

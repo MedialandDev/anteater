@@ -1,11 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
+const { VueLoaderPlugin } = require('vue-loader');
 const { name } = require('../../package.json');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const DEV_MODE = process.env.NODE_ENV === 'development';
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   devtool: DEV_MODE ? 'inline-source-map' : false,
   resolve: {
     modules: [
@@ -39,28 +41,18 @@ module.exports = {
         use: {
           loader: 'vue-loader',
           options: {
-            preserveWhitespace: false,
-            // extractCSS: true,
-            stylus: 'stylus-loader?paths=src/css/',
           },
         },
+      },
+      {
+        test: /\.pug$/,
+        use: ['pug-plain-loader'],
       },
     ],
   },
   plugins: [
+    new VueLoaderPlugin(),
     new webpack.BannerPlugin(`${name} under MIT License copyright ${new Date().getFullYear()} Medialand`),
-    ...DEV_MODE
-      ? [
-        new webpack.NamedModulesPlugin(),
-      ]
-      : [
-        new webpack.optimize.UglifyJsPlugin({
-          compress: {
-            warnings: false,
-          },
-          sourceMap: false,
-        }),
-      ],
   ],
   externals: [
     'Vue',
