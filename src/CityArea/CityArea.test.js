@@ -1,5 +1,6 @@
 import CityAreaData, { getCities, getAreas } from '.';
 
+
 describe('CityArea', () => {
   test('CityAreaData', () => {
     expect(Object.keys(CityAreaData).length).toBe(22);
