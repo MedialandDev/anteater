@@ -1,6 +1,6 @@
 // @flow
-export type Area = {
+export type AreaType = {
   name: string,
   zip: string,
 };
-export type CityArea = Map<string, Area[]>;
+export type CityAreaType = Map<string, AreaType[]>;

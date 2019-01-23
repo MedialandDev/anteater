@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
-const { name } = require('../../package.json');
+const { name, version } = require('../../package.json');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const DEV_MODE = process.env.NODE_ENV === 'development';
@@ -52,11 +52,10 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new webpack.BannerPlugin(`${name} under MIT License copyright ${new Date().getFullYear()} Medialand`),
+    new webpack.BannerPlugin(`${name} under MIT License copyright ${new Date().getFullYear()} Medialand version:${version}`),
   ],
   externals: [
     'Vue',
     'Vuex',
   ],
 };
-
