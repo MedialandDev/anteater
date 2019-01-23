@@ -1,7 +1,7 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const base = require('./webpack.base');
 
 const entryArr = [
@@ -44,6 +44,9 @@ module.exports = merge(base, {
     new CleanWebpackPlugin(getLibFolderNames(), {
       root: process.cwd(),
     }),
+    new CopyWebpackPlugin([
+      { from: 'src/CityArea/CityAreaData.json', to: './CityArea', ignore: ['.*'] },
+    ]),
   ],
   externals: [
     ...base.externals,
